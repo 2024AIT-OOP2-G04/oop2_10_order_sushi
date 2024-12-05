@@ -383,7 +383,7 @@
         "kind": 6,
         "importPath": "models.order",
         "description": "models.order",
-        "peekOfCode": "class Order(Model):\n    user = ForeignKeyField(Customer, backref=\"orders\")\n    product = ForeignKeyField(Goods, backref=\"orders\")\n    order_date = DateTimeField()\n    class Meta:\n        database = db",
+        "peekOfCode": "class Order(Model):\n    customer = ForeignKeyField(Customer, backref=\"orders\")\n    goods = ForeignKeyField(Goods, backref=\"orders\")\n    order_date = DateTimeField()\n    class Meta:\n        database = db",
         "detail": "models.order",
         "documentation": {}
     },
@@ -473,7 +473,7 @@
         "kind": 2,
         "importPath": "routes.order",
         "description": "routes.order",
-        "peekOfCode": "def list():\n    orders = Order.select()\n    return render_template(\"order_list.html\", title=\"注文一覧\", items=orders)\n@order_bp.route(\"/add\", methods=[\"GET\", \"POST\"])\ndef add():\n    if request.method == \"POST\":\n        user_id = request.form[\"user_id\"]\n        product_id = request.form[\"product_id\"]\n        order_date = datetime.now()\n        Order.create(user=user_id, product=product_id, order_date=order_date)",
+        "peekOfCode": "def list():\n    orders = Order.select()\n    return render_template(\"order_list.html\", title=\"注文一覧\", items=orders)\n@order_bp.route(\"/add\", methods=[\"GET\", \"POST\"])\ndef add():\n    if request.method == \"POST\":\n        customer_id = request.form[\"customer_id\"]\n        goods_id = request.form[\"goods_id\"]\n        order_date = datetime.now()\n        Order.create(customer=customer_id, goods=goods_id, order_date=order_date)",
         "detail": "routes.order",
         "documentation": {}
     },
@@ -482,7 +482,7 @@
         "kind": 2,
         "importPath": "routes.order",
         "description": "routes.order",
-        "peekOfCode": "def add():\n    if request.method == \"POST\":\n        user_id = request.form[\"user_id\"]\n        product_id = request.form[\"product_id\"]\n        order_date = datetime.now()\n        Order.create(user=user_id, product=product_id, order_date=order_date)\n        return redirect(url_for(\"order.list\"))\n    users = Customer.select()\n    products = Goods.select()\n    return render_template(\"order_add.html\", users=users, products=products)",
+        "peekOfCode": "def add():\n    if request.method == \"POST\":\n        customer_id = request.form[\"customer_id\"]\n        goods_id = request.form[\"goods_id\"]\n        order_date = datetime.now()\n        Order.create(customer=customer_id, goods=goods_id, order_date=order_date)\n        return redirect(url_for(\"order.list\"))\n    customers = Customer.select()\n    goods = Goods.select()\n    return render_template(\"order_add.html\", customers=customers, goods=goods)",
         "detail": "routes.order",
         "documentation": {}
     },
@@ -491,7 +491,7 @@
         "kind": 2,
         "importPath": "routes.order",
         "description": "routes.order",
-        "peekOfCode": "def edit(order_id):\n    order = Order.get_or_none(Order.id == order_id)\n    if not order:\n        return redirect(url_for(\"order.list\"))\n    if request.method == \"POST\":\n        order.user = request.form[\"user_id\"]\n        order.product = request.form[\"product_id\"]\n        order.save()\n        return redirect(url_for(\"order.list\"))\n    users = Customer.select()",
+        "peekOfCode": "def edit(order_id):\n    order = Order.get_or_none(Order.id == order_id)\n    if not order:\n        return redirect(url_for(\"order.list\"))\n    if request.method == \"POST\":\n        order.customer = request.form[\"customer_id\"]\n        order.good = request.form[\"good_id\"]\n        order.save()\n        return redirect(url_for(\"order.list\"))\n    customers = Customer.select()",
         "detail": "routes.order",
         "documentation": {}
     },
@@ -500,7 +500,7 @@
         "kind": 5,
         "importPath": "routes.order",
         "description": "routes.order",
-        "peekOfCode": "order_bp = Blueprint(\"order\", __name__, url_prefix=\"/orders\")\n@order_bp.route(\"/\")\ndef list():\n    orders = Order.select()\n    return render_template(\"order_list.html\", title=\"注文一覧\", items=orders)\n@order_bp.route(\"/add\", methods=[\"GET\", \"POST\"])\ndef add():\n    if request.method == \"POST\":\n        user_id = request.form[\"user_id\"]\n        product_id = request.form[\"product_id\"]",
+        "peekOfCode": "order_bp = Blueprint(\"order\", __name__, url_prefix=\"/orders\")\n@order_bp.route(\"/\")\ndef list():\n    orders = Order.select()\n    return render_template(\"order_list.html\", title=\"注文一覧\", items=orders)\n@order_bp.route(\"/add\", methods=[\"GET\", \"POST\"])\ndef add():\n    if request.method == \"POST\":\n        customer_id = request.form[\"customer_id\"]\n        goods_id = request.form[\"goods_id\"]",
         "detail": "routes.order",
         "documentation": {}
     },
