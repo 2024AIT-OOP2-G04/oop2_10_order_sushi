@@ -22,7 +22,7 @@
             </select>
         </label><br>
         <label>寿司: 
-            <select name="goods_id" required>
+            <select name="good_id" required>
                 {% for good in goods %}
                     <option value="{{ good.id }}" {% if order.good.id == good.id %}selected{% endif %}>{{ good.name }}</option>
                 {% endfor %}
