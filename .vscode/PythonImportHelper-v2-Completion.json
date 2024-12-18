@@ -200,6 +200,46 @@
         "documentation": {}
     },
     {
+        "label": "Blueprint",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
+        "label": "render_template",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
+        "label": "request",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
+        "label": "redirect",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
+        "label": "url_for",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
         "label": "Flask",
         "importPath": "flask",
         "description": "flask",
@@ -213,6 +253,14 @@
         "description": "flask",
         "isExtraImport": true,
         "detail": "flask",
+        "documentation": {}
+    },
+    {
+        "label": "Customer",
+        "importPath": "models",
+        "description": "models",
+        "isExtraImport": true,
+        "detail": "models",
         "documentation": {}
     },
     {
@@ -261,6 +309,15 @@
         "description": "models",
         "isExtraImport": true,
         "detail": "models",
+        "documentation": {}
+    },
+    {
+        "label": "json",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "json",
+        "description": "json",
+        "detail": "json",
         "documentation": {}
     },
     {
@@ -313,6 +370,24 @@
         "description": "models.order",
         "peekOfCode": "class Order(Model):\n    customer = ForeignKeyField(Customer, backref=\"orders\")\n    good = ForeignKeyField(Goods, backref=\"orders\")\n    order_date = DateTimeField()\n    class Meta:\n        database = db",
         "detail": "models.order",
+        "documentation": {}
+    },
+    {
+        "label": "number_of_usage_by_table",
+        "kind": 2,
+        "importPath": "routes.api.number_of_usage_by_table",
+        "description": "routes.api.number_of_usage_by_table",
+        "peekOfCode": "def number_of_usage_by_table():\n    customers = Customer.select()\n    print(\"data\", customers)\n    data = [{\"id\": customer.id, \"table\": customer.table} for customer in customers]\n    return json.dumps(data)",
+        "detail": "routes.api.number_of_usage_by_table",
+        "documentation": {}
+    },
+    {
+        "label": "api_bp",
+        "kind": 5,
+        "importPath": "routes.api.number_of_usage_by_table",
+        "description": "routes.api.number_of_usage_by_table",
+        "peekOfCode": "api_bp = Blueprint(\"api\", __name__, url_prefix=\"/api\")\n@api_bp.route(\"/number_of_usage_by_table\", methods=[\"GET\"])\ndef number_of_usage_by_table():\n    customers = Customer.select()\n    print(\"data\", customers)\n    data = [{\"id\": customer.id, \"table\": customer.table} for customer in customers]\n    return json.dumps(data)",
+        "detail": "routes.api.number_of_usage_by_table",
         "documentation": {}
     },
     {

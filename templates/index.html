@@ -1,16 +1,24 @@
 <!DOCTYPE html>
 <html lang="ja">
-<head>
-    <meta charset="UTF-8">
+  <head>
+    <meta charset="UTF-8" />
     <title>データ一覧</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='base-style.css') }}">
-</head>
-<body>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='base-style.css') }}"
+    />
+  </head>
+  <body>
     <h1>index</h1>
     <ul>
       <li><a href="{{ url_for('customer.list') }}">客リスト</a></li>
       <li><a href="{{ url_for('goods.list') }}">商品リスト</a></li>
       <li><a href="{{ url_for('order.list') }}">注文リスト</a></li>
     </ul>
-</body>
+    <script src="number_of_usage_by_table.js"></script>
+    <script src=""></script>
+    <script src=""></script>
+    <script src="/static/sales_by_good.js"></script>
+    <script src=""></script>
+  </body>
 </html>
